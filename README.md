@@ -108,20 +108,21 @@ Admins/Staff can:<br>
 * Track payments and deposits.
 
 # Project Structure
-/app
-    /controllers
-    /core
-    /models
-    /views
-/assets
-    /images
-    /css
-    /js
-/uploads
-    # Uploaded images and sliders
-/public
-    index.php
-    htaccess
+
+/app<br>
+    /controllers<br>
+    /core<br>
+    /models<br>
+    /views<br>
+/assets<br>
+    /images<br>
+    /css<br>
+    /js<br>
+/uploads<br>
+    # Uploaded images and sliders<br>
+/public<br>
+    index.php<br>
+    htaccess<br>
 
 #  Notes
 
@@ -132,6 +133,7 @@ Admins/Staff can:<br>
 # License
 
 This project is open-source and free to use for educational and development purposes.
+
 
 
 
