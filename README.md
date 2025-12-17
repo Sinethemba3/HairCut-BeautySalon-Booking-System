@@ -26,22 +26,22 @@ It provides: <br>
 
 # Features
 
-User roles: Admin, Staff, Customer.
-Booking management: View, edit, delete appointments.
-Service categories: Hairdressing, Nails, Face & Body, Wigs, Packages, Kiddies, Elderly.
-Dynamic sliders: Display salon images on the homepage.
-Notifications: Remind clients of upcoming appointments.
-Payment system: Track deposits and full payments.
-Responsive UI: Mobile and desktop friendly.
+* User roles: Admin, Staff, Customer.<br>
+* Booking management: View, edit, delete appointments.<br>
+* Service categories: Hairdressing, Nails, Face & Body, Wigs, Packages, Kiddies, Elderly.<br>
+* Dynamic sliders: Display salon images on the homepage.<br>
+* Notifications: Remind clients of upcoming appointments.<br>
+* Payment system: Track deposits and full payments.<br>
+* Responsive UI: Mobile and desktop friendly.
 
 # Technologies
 
-Backend: PHP 8.x
-Frontend: HTML5, CSS3, JavaScript, Bootstrap 5
-Database: MySQL / MariaDB
-Version Control: Git & GitHub
-Libraries: AOS (Animate on Scroll), Ionicons, FontAwesome
-Server Environment: XAMPP / LAMP / WAMP (local)
+* Backend: PHP 8.x<br>
+* Frontend: HTML5, CSS3, JavaScript, Bootstrap 5<br>
+* Database: MySQL / MariaDB<br>
+* Version Control: Git & GitHub<br>
+* Libraries: AOS (Animate on Scroll), Ionicons, FontAwesome<br>
+* Server Environment: XAMPP / LAMP / WAMP (local)
 
 # Architecture & Pattern
 
@@ -132,6 +132,7 @@ Roles are enforced in the Dashboard for security and proper access.
 # License
 
 This project is open-source and free to use for educational and development purposes.
+
 
 
 
