@@ -1,5 +1,4 @@
 ﻿﻿# HairCut-BeautySalon-Booking-System
-  
 A fully functional Haircut and Beauty Salon Booking System designed to manage appointments, services, customers, and salon staff efficiently. This system allows clients to book appointments online, and admins/staff to manage services, schedules, and payments.
 
 # Table of Contents
