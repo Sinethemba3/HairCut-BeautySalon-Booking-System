@@ -2,12 +2,13 @@
 A fully functional Haircut and Beauty Salon Booking System designed to manage appointments, services, customers, and salon staff efficiently. This system allows clients to book appointments online, and admins/staff to manage services, schedules, and payments.
 
 # Table of Contents
-Purpose
-Features
-Technologies
-Architecture & Pattern
-Database
-Setup Instructions
+
+Purpose,
+Features,
+Technologies,
+Architecture & Pattern,
+Database, 
+Setup Instructions <br>
 Usage
 License
 
@@ -109,6 +110,7 @@ Track payments and deposits.
 # Project Structure
 /app
     /controllers
+    /core
     /models
     /views
 /assets
@@ -119,6 +121,7 @@ Track payments and deposits.
     # Uploaded images and sliders
 /public
     index.php
+    htaccess
 
 #  Notes
 
@@ -129,3 +132,4 @@ Roles are enforced in the Dashboard for security and proper access.
 # License
 
 This project is open-source and free to use for educational and development purposes.
+
