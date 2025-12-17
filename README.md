@@ -110,14 +110,14 @@ Admins/Staff can:<br>
 # Project Structure
 
 /app<br>
-    /controllers<br>
-    /core<br>
-    /models<br>
-    /views<br>
+    -controllers<br>
+    -core<br>
+    -models<br>
+    -views<br>
 /assets<br>
-    /images<br>
-    /css<br>
-    /js<br>
+    -images<br>
+    -css<br>
+    -js<br>
 /uploads<br>
     # Uploaded images and sliders<br>
 /public<br>
@@ -133,6 +133,7 @@ Admins/Staff can:<br>
 # License
 
 This project is open-source and free to use for educational and development purposes.
+
 
 
 
