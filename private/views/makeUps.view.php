@@ -45,7 +45,9 @@
             color: #fff;
             border: none;
             padding: 0.45rem 1.3rem;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
+            font-family: 'Montserrat', sans-serif !important;
+            font-weight: lighter !important;
             border-radius: 20px;
             cursor: pointer;
             transition: background 0.3s ease;
@@ -182,6 +184,7 @@
                             <nav aria-label="breadcrumb">
                                 <ul>
                                     <li><a href="<?=ROOT?>/">Home</a></li>
+                                    <li><a href="javascript:void(0)">Pages</a></li>
                                     <li class="active" aria-current="page">Services</li>
                                 </ul>
                             </nav>
@@ -193,7 +196,7 @@
     </div> <!-- ...:::: End Breadcrumb Section:::... -->
 
     <!-- Start Service Section -->
-    <div id="bookings" class="service-promo-section section-top-gap-100">
+    <div id="bookings" class="service-promo-section section-top-gap-0">
         <!-- Start Services Content Text Area -->
         <div class="main-menu section-title-wrapper py-5 my-5 bg-light rounded-4 shadow-sm">
             <div class="container text-center px-4">

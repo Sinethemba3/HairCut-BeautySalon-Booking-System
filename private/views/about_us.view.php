@@ -11,6 +11,12 @@
             padding-bottom: 100px;
         }
 
+        .breadcrumb-title {
+            font-family: 'Montserrat', sans-serif !important;
+            font-size: 1.5rem !important;
+            font-weight: lighter !important;
+        }
+
         .greatvibes {
             font-family: 'Great Vibes', cursive;
         }
@@ -167,7 +173,7 @@
                             <nav aria-label="breadcrumb">
                                 <ul>
                                     <li><a href="<?=ROOT?>/home">Home</a></li>
-                                    <li><a href="#">Pages</a></li>
+                                    <li><a href="javascript:void(0)">Pages</a></li>
                                     <li class="active" aria-current="page">About Us</li>
                                 </ul>
                             </nav>

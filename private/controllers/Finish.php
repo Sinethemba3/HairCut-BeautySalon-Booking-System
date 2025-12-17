@@ -36,7 +36,7 @@
             $service    = $orderData->services_ ?? '';
             $date       = $orderData->appointment_date ?? '';
             $time       = $orderData->appointment_time ?? '';
-            $adminEmail = "nxayiphi3@gmail.com";
+            $adminEmail = SMTP_EMAIL;
 
             // Booking Table HTML
             // Example input
@@ -51,7 +51,16 @@
                 $total += floatval(trim($amt));
             }
 
-            $deposit = number_format($total * 1.14 / 2, 2);
+            $vatRate = 1.14;
+
+            // Total including VAT
+            $totalWithVat = $total * $vatRate;
+
+            // Deposit (50%)
+            $deposit = number_format($totalWithVat / 2, 2);
+
+            // Amount due
+            $amountDue = number_format($totalWithVat - ($totalWithVat / 2), 2);
 
             // Process services into a list
             $serviceItems = explode(',', $service);
@@ -64,37 +73,51 @@
 
             // Build booking table
             $bookingTable = "
-                <table style='width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 20px;'>
-                    <tr>
-                        <th style='padding:8px; background:#f8f8f8;'>Client Name</th>
-                        <td style='padding:8px;'>" . esc($name) . "</td>
-                    </tr>
-                    <tr>
-                        <th style='padding:8px;'>Service</th>
-                        <td style='padding:8px; vertical-align: top;'>" . $serviceList . "</td>
-                    </tr>
-                    <tr>
-                        <th style='padding:8px;'>Therapist</th>
-                        <td style='padding:8px;'>" . esc($name_) . "</td>
-                    </tr>
-                    <tr>
-                        <th style='padding:8px; background:#f8f8f8;'>Appointment Date</th>
-                        <td style='padding:8px;'>" . esc($date) . "</td>
-                    </tr>
-                    <tr>
-                        <th style='padding:8px;'>Appointment Time</th>
-                        <td style='padding:8px;'>" . esc($time) . "</td>
-                    </tr>
-                    <tr>
-                        <th style='padding:8px; background:#f8f8f8;'>Phone</th>
-                        <td style='padding:8px;'>" . esc($phone) . "</td>
-                    </tr>
-                    <tr>
-                        <th style='padding:8px;'>50% Deposit Paid</th>
-                        <td style='padding:8px;'>R{$deposit}</td>
-                    </tr>
-                </table>
-            ";
+                <br>
+                    <table style='width:100%; max-width:600px; border-collapse:collapse; font-family:Arial, sans-serif; font-size:0.8rem;'>
+
+                        <tr>
+                            <th style='padding:10px; text-align:left; width:35%; background:#f2f2f2;'>Customer Name:</th>
+                            <td style='padding:10px; font-weight:lighter; background:#f2f2f2;'>" . esc($name) . "</td>
+                        </tr>
+
+                        <tr>
+                            <th style='padding:10px; text-align:left;'>Service:</th>
+                            <td style='padding:10px; font-weight:lighter;'>" . $serviceList . "</td>
+                        </tr>
+
+                        <tr>
+                            <th style='padding:10px; text-align:left; background:#f2f2f2;'>Therapist:</th>
+                            <td style='padding:10px; font-weight:lighter; background:#f2f2f2;'>" . esc($name_) . "</td>
+                        </tr>
+
+                        <tr>
+                            <th style='padding:10px; text-align:left;'>Date:</th>
+                            <td style='padding:10px; font-weight:lighter;'>" . esc($date) . "</td>
+                        </tr>
+
+                        <tr>
+                            <th style='padding:10px; text-align:left; background:#f2f2f2;'>Time:</th>
+                            <td style='padding:10px; font-weight:lighter; background:#f2f2f2;'>" . esc($time) . "</td>
+                        </tr>
+
+                        <tr>
+                            <th style='padding:10px; text-align:left;'>Phone:</th>
+                            <td style='padding:10px; font-weight:lighter;'>" . esc($phone) . "</td>
+                        </tr>
+
+                        <tr>
+                            <th style='padding:10px; text-align:left; background:#f2f2f2;'>50% Deposit Paid:</th>
+                            <td style='padding:10px; font-weight:lighter; background:#f2f2f2;'>R" . esc($deposit) . "</td>
+                        </tr>
+
+                        <tr>
+                            <th style='padding:10px; text-align:left;'>Amount Due:</th>
+                            <td style='padding:10px; font-weight:lighter;'>R" . esc($amountDue) . "</td>
+                        </tr>
+
+                    </table>
+                <br>";
 
             // Setup PHPMailer
             $mail = new PHPMailer(true);
@@ -118,8 +141,8 @@
                 $mail->Port       = 587;
 
                 $mail->isHTML(true);
-                $mail->setFrom('nxayiphi3@gmail.com', 'Bookings Website');
-                $mail->addReplyTo('nxayiphi3@gmail.com');
+                $mail->setFrom(SMTP_EMAIL, 'DataSync Hair & Beauty');
+                $mail->addReplyTo(SMTP_EMAIL);
 
                 // Approved Booking
                 if (isset($_GET['mode']) && $_GET['mode'] == "approved") {
@@ -131,11 +154,11 @@
                     $mail->Body = "
                         <html><body>
                             <div style='font-family: Arial, sans-serif;'>
-                                <h2 style='color: #28a745;'>Thank You, $name!</h2>
+                                <h2>Thank You, $name!</h2>
                                 <p>Your booking is confirmed. See your details below:</p>
                                 $bookingTable
                                 <p>We look forward to seeing you soon!</p>
-                                <p style='color: gray;'>Afikam Hair and Beauty</p>
+                                <p style='color: gray;'>DataSync Hair & Beauty</p>
                             </div>
                         </body></html>
                     ";
@@ -143,15 +166,15 @@
                     $mail->clearAddresses();
 
                     // Email to admin
-                    $mail->addAddress($adminEmail, 'Afikam Admin');
-                    $mail->Subject = "New Booking Confirmed: #$orderId";
+                    $mail->addAddress($adminEmail, 'DataSync Admin');
+                    $mail->Subject = "New Booking Received: #$orderId";
                     $mail->Body = "
                         <html><body>
                             <div style='font-family: Arial, sans-serif;'>
                                 <h2>New Booking Received</h2>
                                 $bookingTable
                                 <p>Please schedule accordingly.</p>
-                                <p style='font-size: 12px; color: gray;'>System Notification | Afikam</p>
+                                <p style='font-size: 12px; color: gray;'>System Notification | DataSync Hair & Beauty</p>
                             </div>
                         </body></html>
                     ";
@@ -172,7 +195,7 @@
                                 <p>Hi $name_, your booking was not successful.</p>
                                 $bookingTable
                                 <p>If this was a mistake, please try again.</p>
-                                <p style='color: gray;'>Afikam Hair and Beauty</p>
+                                <p style='color: gray;'>DataSync Hair & Beauty</p>
                             </div>
                         </body></html>
                     ";
@@ -188,6 +211,7 @@
                                 <h2 style='color: red;'>Booking Cancelled or Failed</h2>
                                 $bookingTable
                                 <p>No action required.</p>
+                                <p style='color: gray;'>DataSync Hair & Beauty</p>
                             </div>
                         </body></html>
                     ";

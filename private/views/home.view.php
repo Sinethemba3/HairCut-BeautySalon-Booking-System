@@ -36,13 +36,17 @@
             margin-bottom: 2rem;
         }
 
+        
+
         .service-filters button {
             background: #2563eb; /* Light Blue */
             color: #fff;
             border: none;
             padding: 0.45rem 1.3rem;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             border-radius: 20px;
+            font-family: 'Montserrat', sans-serif !important;
+            font-weight: lighter !important;
             cursor: pointer;
             transition: background 0.3s ease;
         }

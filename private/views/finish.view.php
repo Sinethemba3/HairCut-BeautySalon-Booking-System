@@ -9,6 +9,12 @@
     .b-title{
         padding-bottom: 100px;
     }
+
+    .breadcrumb-title {
+        font-family: 'Montserrat', sans-serif !important;
+        font-size: 1.5rem !important;
+        font-weight: lighter !important;
+    }
 </style>
 
 <link href="<?=ROOT?>/assets/css/icons.min.css" rel="stylesheet" type="text/css">
@@ -168,7 +174,7 @@
                         <nav aria-label="breadcrumb">
                             <ul>
                                 <li><a href="<?=ROOT?>/">Home</a></li>
-                                <li><a href="<?=ROOT?>/">Shop</a></li>
+                                <li><a href="javascript:void(0)">Pages</a></li>
                                 <li class="active" aria-current="page"><?= $title ?></h1></li>
                             </ul>
                         </nav>

@@ -9,6 +9,12 @@
         .b-title{
             padding-bottom: 100px;
         }
+
+        .breadcrumb-title {
+            font-family: 'Montserrat', sans-serif !important;
+            font-size: 1.5rem !important;
+            font-weight: lighter !important;
+        }
     </style>
    
     <!-- Start Offcanvas Addcart Section -->
@@ -170,6 +176,7 @@
                             <nav aria-label="breadcrumb">
                                 <ul>
                                     <li><a href="<?=ROOT?>/home">Home</a></li>
+                                    <li><a href="javascript:void(0)">Pages</a></li>
                                     <li class="active" aria-current="page"><?= esc($title) ?></li>
                                 </ul>
                             </nav>
@@ -276,7 +283,7 @@
                                                         class="amount-checkbox"
                                                         style="display: none;"
                                                         disabled>
-                                                    <span style="font-size: 0.7rem;">R<?= number_format($row->price1, 2) ?></span>
+                                                    <span style="font-size: 0.7rem;">R<?= number_format($row->price1 * 1.14, 2) ?></span>
                                                 </label>
                                             </div>
                                         <?php endforeach; ?>
@@ -292,6 +299,16 @@
                     </div>
                 </div>
             <?php endforeach; ?>
+
+            <!-- Button -->
+            <div style="padding-left: 2%; padding-top: 10px;">
+                <button type="submit" id="submitButton"
+                    class="d-flex align-items-center text-white"
+                    style="background: #2563eb; padding: 10px 25px; border-radius: 35px; min-width: 120px; letter-spacing: .1em; font-weight: 400; font-size: 0.9rem; text-align: center;"
+                    disabled>
+                    continue <i class="ion-ios-arrow-thin-right"></i>
+                </button>
+            </div>
         </form>
     </div>
 

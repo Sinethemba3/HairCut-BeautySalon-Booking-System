@@ -15,6 +15,12 @@
             font-family: 'Great Vibes', cursive;
         }
 
+        .breadcrumb-title {
+            font-family: 'Montserrat', sans-serif !important;
+            font-size: 1.5rem !important;
+            font-weight: lighter !important;
+        }
+
         .p {
             font-family: 'Montserrat', sans-serif;
             font-weight: lighter !important;
