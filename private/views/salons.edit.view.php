@@ -158,7 +158,7 @@
                                             <!-- Single input -->
                                             <input
                                                 type="file"
-                                                name="slider[]"
+                                                name="slider[<?= $i ?>]"
                                                 accept="image/*"
                                                 hidden
                                                 onchange="handleSliderUpload(this)">
@@ -242,20 +242,20 @@
                 name.textContent = file.name;
             }
 
-            function handleSubmit(e, form) {
-                e.preventDefault();
+            // function handleSubmit(e, form) {
+            //     e.preventDefault();
 
-                if (!logoAdded) { alert('Please upload a logo.'); return false; }
-                if (!ownerImageAdded) { alert('Please upload owner image.'); return false; }
+            //     if (!logoAdded) { alert('Please upload a logo.'); return false; }
+            //     if (!ownerImageAdded) { alert('Please upload owner image.'); return false; }
 
-                const sliders = document.querySelectorAll('input[name="slider[]"]');
-                let sliderAdded = false;
-                sliders.forEach(input => { if(input.files.length>0) sliderAdded = true; });
-                if (!sliderAdded) { alert('Please upload at least one slider image.'); return false; }
+            //     const sliders = document.querySelectorAll('input[name="slider[]"]');
+            //     let sliderAdded = false;
+            //     sliders.forEach(input => { if(input.files.length>0) sliderAdded = true; });
+            //     if (!sliderAdded) { alert('Please upload at least one slider image.'); return false; }
 
-                form.submit();
-                return true;
-            }
+            //     form.submit();
+            //     return true;
+            // }
         </script>
 
 <?php $this->view('includes/admin_footer'); ?>

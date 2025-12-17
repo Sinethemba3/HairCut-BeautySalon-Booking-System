@@ -5,7 +5,7 @@
         {
             $errors = [];
             $salonModel      = new Salon();
-            $servicesModel   = new Our_service();
+            $servicesModel   = new Our_service(); 
 
             // Check if the user is logged in 
             if (Auth::logged_in()) {

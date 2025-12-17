@@ -92,11 +92,11 @@
         return date("H:i:s", strtotime($time)); // H:i gives time in 24-hour format
     }
 
-    function show($data)
-    {
+    function show($data) {
         echo "<pre>";
             print_r($data);
         echo "</pre>";
+        die; // ❌ execution stops here
     }
 
     function get_image($image, $gender = "Male")

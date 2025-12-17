@@ -47,7 +47,7 @@
                     if (!file_exists($folder)) mkdir($folder, 0777, true);
 
                     // Helper function for single file upload
-                    function uploadFile($key, $allowed, $folder, &$errors)
+                    function upload_image($key, $allowed, $folder, &$errors)
                     {
                         if (isset($_FILES[$key]) && $_FILES[$key]['error'] === 0) {
                             $file = $_FILES[$key];
@@ -69,8 +69,8 @@
                     }
 
                     // Handle logo and user image
-                    $_POST['image']      = uploadFile('image', $allowed, $folder, $errors);
-                    $_POST['user_image'] = uploadFile('user_image', $allowed, $folder, $errors);
+                    $_POST['image']      = upload_image('image', $allowed, $folder, $errors);
+                    $_POST['user_image'] = upload_image('user_image', $allowed, $folder, $errors);
 
                     // Handle multiple slider images
                     if (isset($_FILES['slider'])) {
@@ -149,36 +149,43 @@
                 $allowed = ['image/jpeg', 'image/png', 'image/gif', 'image/webp', 'image/bmp', 'image/tiff', 'image/svg+xml'];
 
                 // Single files
-                $uploadedImage = uploadFile('image', $allowed, $folder, $errors);
+                $uploadedImage = upload_image('image', $allowed, $folder, $errors);
                 if ($uploadedImage) $_POST['image'] = $uploadedImage;
 
-                $uploadedUserImage = uploadFile('user_image', $allowed, $folder, $errors);
+                $uploadedUserImage = upload_image('user_image', $allowed, $folder, $errors);
                 if ($uploadedUserImage) $_POST['user_image'] = $uploadedUserImage;
 
                 // Multiple slider images
+                $existingSliders = !empty($existingstore->slider)
+                    ? array_values(array_filter(explode(',', $existingstore->slider)))
+                    : [];
+
+                // 🔥 match UI
+                $existingSliders = array_slice($existingSliders, 0, 3);
+                $existingSliders = array_pad($existingSliders, 3, null);
+
                 if (isset($_FILES['slider'])) {
-                    $sliderFiles = [];
+
                     foreach ($_FILES['slider']['tmp_name'] as $index => $tmpName) {
-                        if ($_FILES['slider']['error'][$index] === 0) {
-                            $type = $_FILES['slider']['type'][$index];
-                            if (!in_array($type, $allowed)) continue;
 
-                            $ext = pathinfo($_FILES['slider']['name'][$index], PATHINFO_EXTENSION);
-                            $fileName = time() . "_" . uniqid() . "." . $ext;
-                            $destination = $folder . $fileName;
+                        if ($_FILES['slider']['error'][$index] !== 0) continue;
+                        if (!in_array($_FILES['slider']['type'][$index], $allowed)) continue;
 
-                            if (move_uploaded_file($tmpName, $destination)) $sliderFiles[] = $destination;
+                        $ext = pathinfo($_FILES['slider']['name'][$index], PATHINFO_EXTENSION);
+                        $fileName = time() . "_" . uniqid() . "." . $ext;
+                        $destination = $folder . $fileName;
+
+                        if (move_uploaded_file($tmpName, $destination)) {
+                            // ✅ replace ONLY this slot
+                            $existingSliders[$index] = $destination;
                         }
                     }
 
-                    if (!empty($sliderFiles)) {
-                        // Merge with existing sliders if needed
-                        $existingSliders = explode(',', $existingstore->slider ?? '');
-                        $_POST['slider'] = implode(',', array_merge($existingSliders, $sliderFiles));
-                    }
+                    $_POST['slider'] = implode(',', array_filter($existingSliders));
                 }
 
                 if (empty($errors)) {
+                    // show($_POST) or die();
                     $storeModel->update($id, $_POST);
                     $this->redirect('salons');
                 }

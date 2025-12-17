@@ -265,57 +265,72 @@
     <div class="offcanvas-overlay"></div>
 
     <!-- Start Carousel Slide -->
-    <div id="carouselExampleIndicators" class="carousel slide img-fluid" data-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        </ol>
+    <?php
+        $sliderImages = [];
 
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="<?=ROOT?>/assets/images/hero-slider/home-2/slide1.webp" class="w-100 img1 img-fluid" alt="First slide">
-                <div class="carousel-caption" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="0">
-                    <!-- <div class="text-uppercase" style="font-weight: lighter; font-size: 1.5rem">Afika M Make Up</div>
-                    <br> -->
-                    <a href="#bookings" class="btn btn-lg icon-space-left" style="background: #FFFFFF;"><span
-                        class="d-flex align-items-center" style="font-size: 0.8rem; font-weight: lighter;">Book Now<i class="ion-ios-arrow-thin-right"></i></span> 
-                    </a>
-                </div>
+        if (!empty($rows)) {
+            foreach ($rows as $salon) {
+                if (!empty($salon->slider)) {
+                    $images = array_map('trim', explode(',', $salon->slider));
+                    $sliderImages = array_merge($sliderImages, $images);
+                }
+            }
+        }
+
+        // remove duplicates + FIX KEYS
+        $sliderImages = array_values(array_unique(array_filter($sliderImages)));
+    ?>
+
+    <?php if (!empty($sliderImages)): ?>
+        <div id="carouselExampleIndicators" class="carousel slide img-fluid" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <?php foreach ($sliderImages as $index => $img): ?>
+                    <li 
+                        data-target="#carouselExampleIndicators"
+                        data-slide-to="<?= $index ?>"
+                        class="<?= $index === 0 ? 'active' : '' ?>">
+                    </li>
+                <?php endforeach; ?>
+            </ol>
+
+            <div class="carousel-inner">
+                <?php foreach ($sliderImages as $index => $img): ?>
+                    
+                    <div class="carousel-item <?= $index === 0 ? 'active' : '' ?>">
+                        <img 
+                            src="<?= fetch_images($img) ?>"
+                            class="w-100 img1 img-fluid"
+                            alt="Slide <?= $index + 1 ?>">
+
+                        <div class="carousel-caption"
+                            data-aos="fade-up"
+                            data-aos-duration="<?= 1000 + ($index * 500) ?>"
+                            data-aos-delay="0">
+
+                            <a href="#bookings"
+                            class="btn btn-lg icon-space-left"
+                            style="background: #FFFFFF;">
+                                <span class="d-flex align-items-center"
+                                    style="font-size: 0.8rem; font-weight: lighter;">
+                                    Book Now
+                                    <i class="ion-ios-arrow-thin-right"></i>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
             </div>
-
-            <div class="carousel-item">
-                <img src="<?=ROOT?>/assets/images/hero-slider/home-2/a1.webp" class="w-100 img1 img-fluid" alt="Second slide">
-                <div class="carousel-caption" data-aos="fade-up" data-aos-duration="3000" data-aos-delay="0">
-                    <!-- <div class="text-uppercase" style="font-weight: lighter; font-size: 1.5rem">Afika M Nails</div>
-                    <br> -->
-                    <a href="#bookings" class="btn btn-lg icon-space-left" style="background: #FFFFFF;"><span
-                        class="d-flex align-items-center" style="font-size: 0.8rem; font-weight: lighter;">Book Now<i class="ion-ios-arrow-thin-right"></i></span>
-                    </a>
-                </div>
-            </div>
-
-            <div class="carousel-item">
-                <img src="<?=ROOT?>/assets/images/hero-slider/home-2/a2.webp" class="w-100 img1 img-fluid" alt="Third slide">
-                <div class="carousel-caption" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="0">
-                    <!-- <div class="text-uppercase" style="font-weight: lighter; font-size: 1.5rem"> Afika M Spa</div>
-                    <br> -->
-                    <a href="#bookings" class="btn btn-lg icon-space-left" style="background: #FFFFFF;"><span
-                        class="d-flex align-items-center" style="font-size: 0.8rem; font-weight: lighter;">Book Now<i class="ion-ios-arrow-thin-right"></i></span>
-                    </a>
-                </div>
-            </div>\
+            
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
         </div>
-        
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-    </div>
+    <?php endif; ?>
     <!-- End Carousel Slide -->
 
     <!-- Start Service Section -->
