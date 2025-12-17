@@ -47,9 +47,9 @@ It provides: <br>
 
 The system follows the MVC (Model-View-Controller) pattern, which separates the application logic from the presentation and data layer:
 
-Model: Handles database operations (Salon, Users, Services, Appointments).
-View: Frontend templates displaying data.
-Controller: Receives user input, interacts with models, and renders views.
+* Model: Handles database operations (Salon, Users, Services, Appointments).<br>
+* View: Frontend templates displaying data.<br>
+* Controller: Receives user input, interacts with models, and renders views.
 
 This structure allows scalability and maintainability of the code.
 
@@ -57,17 +57,17 @@ This structure allows scalability and maintainability of the code.
 
 The database is built in MySQL/MariaDB and includes tables such as:
 
-users – Stores user credentials and roles.
-salons – Stores salon information and slider images.
-appointments – Stores customer appointments and status.
-services – Stores service categories and descriptions.
-payments – Tracks deposits and full payments.
+* users – Stores user credentials and roles.<br>
+* salons – Stores salon information and slider images.<br>
+* appointments – Stores customer appointments and status.<br>
+* services – Stores service categories and descriptions.<br>
+* payments – Tracks deposits and full payments.
 
 The system also uses comma-separated strings for slider images and dynamic features.
 
 # Setup Instructions
 
-Clone the repository: git clone https://github.com/<username>/HairCut-BeautySalon-Booking-System.git
+Clone the repository: git clone github.github.com/Sinethemba3/HairCut-BeautySalon-Booking-System.git
 
 # Set up the database
 
@@ -132,6 +132,7 @@ Roles are enforced in the Dashboard for security and proper access.
 # License
 
 This project is open-source and free to use for educational and development purposes.
+
 
 
 
