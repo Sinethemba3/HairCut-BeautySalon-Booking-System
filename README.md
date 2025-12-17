@@ -3,13 +3,13 @@ A fully functional Haircut and Beauty Salon Booking System designed to manage ap
 
 # Table of Contents
 
-Purpose,
-Features,
-Technologies,
-Architecture & Pattern,
-Database, 
+Purpose <br>
+Features <br>
+Technologies <br>
+Architecture & Pattern <br>
+Database <br>
 Setup Instructions <br>
-Usage
+Usage <br>
 License
 
 # Purpose
@@ -132,4 +132,5 @@ Roles are enforced in the Dashboard for security and proper access.
 # License
 
 This project is open-source and free to use for educational and development purposes.
+
 
