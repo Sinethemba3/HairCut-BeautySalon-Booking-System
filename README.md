@@ -67,45 +67,45 @@ The system also uses comma-separated strings for slider images and dynamic featu
 
 # Setup Instructions
 
-Clone the repository: git clone github.github.com/Sinethemba3/HairCut-BeautySalon-Booking-System.git
+Clone the repository: git clone git@github.com:Sinethemba3/HairCut-BeautySalon-Booking-System.git
 
 # Set up the database
 
-Create a database in MySQL (e.g., bookings-db).
-Import the provided SQL dump (database.sql) if available.
+* Create a database in MySQL (e.g., bookings-db).<br>
+* Import the provided SQL dump (database.sql) if available.
 
 # Configure the application
 
 Update the database configuration in /app/config.php (or your config file):
 
-define('DB_HOST', 'localhost');
-define('DB_USER', 'root');
-define('DB_PASS', '');
+define('DB_HOST', 'localhost');<br>
+define('DB_USER', 'root');<br>
+define('DB_PASS', '');<br>
 define('DB_NAME', 'bookings-db');
 
 
 # Set up the web server
 
-Place the project folder in htdocs (XAMPP) or /var/www/html (LAMP).
-Start Apache and MySQL.
-Access the app via http://localhost/HairCut-BeautySalon-Booking-System/.
+* Place the project folder in htdocs (XAMPP) or /var/www/html (LAMP).<br>
+* Start Apache and MySQL.<br>
+* Access the app via http://localhost/HairCut-BeautySalon-Booking-System/.
 
 # Optional
 
-Configure your .htaccess for clean URLs (if using Apache).
-Make sure uploads/ folder is writable for image uploads.
+* Configure your .htaccess for clean URLs (if using Apache).<br>
+* Make sure uploads/ folder is writable for image uploads.
 
 # Usage
 
-Open the app in a browser.
-Register as a user or login if you have credentials.
-Customers can book appointments and select services.
+* Open the app in a browser.<br>
+* Register as a user or login if you have credentials.<br>
+* Customers can book appointments and select services.
 
-Admins/Staff can:
-Manage services, categories, and salon info.
-View, accept, or reject appointments.
-Upload slider images for the homepage.
-Track payments and deposits.
+Admins/Staff can:<br>
+* Manage services, categories, and salon info.<br>
+* View, accept, or reject appointments.<br>
+* Upload slider images for the homepage.<br>
+* Track payments and deposits.
 
 # Project Structure
 /app
@@ -125,13 +125,14 @@ Track payments and deposits.
 
 #  Notes
 
-Slider images are stored as comma-separated strings in the database.
-The system supports dynamic display of images and service updates.
-Roles are enforced in the Dashboard for security and proper access.
+* Slider images are stored as comma-separated strings in the database.<br>
+* The system supports dynamic display of images and service updates.<br>
+* Roles are enforced in the Dashboard for security and proper access.
 
 # License
 
 This project is open-source and free to use for educational and development purposes.
+
 
 
 
