@@ -3,26 +3,26 @@ A fully functional Haircut and Beauty Salon Booking System designed to manage ap
 
 # Table of Contents
 
-Purpose <br>
-Features <br>
-Technologies <br>
-Architecture & Pattern <br>
-Database <br>
-Setup Instructions <br>
-Usage <br>
-License
+1. Purpose <br>
+2. Features <br>
+3. Technologies <br>
+4. Architecture & Pattern <br>
+5. Database <br>
+6. Setup Instructions <br>
+7. Usage <br>
+8. License
 
 # Purpose
 
-The HairCut-BeautySalon-Booking-System is intended for small to medium-sized salons that want to manage appointments, services, and payments efficiently.
+The HairCut-BeautySalon-Booking-System is intended for small to medium-sized salons that want to manage appointments, services, and payments efficiently. <br>
 
-It provides:
+It provides: <br>
 
-Online appointment booking for customers.
-Service and category management.
-Staff and admin dashboards.
-Payment tracking and status updates.
-Dynamic content like sliders and announcements.
+* Online appointment booking for customers.<br>
+* Service and category management.<br>
+* Staff and admin dashboards.<br>
+* Payment tracking and status updates.<br>
+* Dynamic content like sliders and announcements.
 
 # Features
 
@@ -132,5 +132,6 @@ Roles are enforced in the Dashboard for security and proper access.
 # License
 
 This project is open-source and free to use for educational and development purposes.
+
 
 
