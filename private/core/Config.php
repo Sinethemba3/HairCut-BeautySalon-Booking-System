@@ -23,14 +23,14 @@
 	} 
 	else {
 		// Live database config
-		define('DBNAME', 'if0_39518178_bookings_db');
-		define('DBHOST', 'sql206.infinityfree.com');
-		define('DBUSER', 'if0_39518178');
-		define('DBPASS', 'RF296HqNAWcI');
+		define('DBNAME', 'bookings-db');
+		define('DBHOST', 'localhost');
+		define('DBUSER', 'root');
+		define('DBPASS', '');
 		define('DBDRIVER', 'mysql');  
 	
 		// URL for live production
-		define('ROOT', 'https://nxavipi.wuaze.com');
+		define('ROOT', 'http://datasync:8089/projects/bookings/public');
 
 		// Redirect URLs for live production
 		define('PAYFAST_RETURN_URL', ROOT . '/thanks?mode=approved');

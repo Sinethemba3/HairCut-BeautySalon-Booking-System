@@ -1,20 +1,41 @@
-RewriteEngine On
+# /public/.htaccess — Cleaned, secure, caching & CORS helper
+<IfModule mod_rewrite.c>
+  RewriteEngine On
 
-# Enable cross domain access control
-SetEnvIf Origin "^http(s)?://(.+\.)?(domain_one\.com|domain_two\.net)$" REQUEST_ORIGIN=$0
-Header always set Access-Control-Allow-Origin: *
-Header always set Access-Control-Allow-Origin %{REQUEST_ORIGIN}e env=REQUEST_ORIGIN
-Header always set Access-Control-Allow-Methods "GET, POST, PUT, DELETE"
-Header always set Access-Control-Allow-Headers: Authorization
+  # Force OPTIONS to 200 for preflight (simple approach)
+  RewriteCond %{REQUEST_METHOD} OPTIONS
+  RewriteRule ^ - [R=200,L]
 
-# Force to request 200 for options
-RewriteEngine On
-RewriteCond %{REQUEST_METHOD} OPTIONS
-RewriteRule .* / [R=200,L]
+  # Allow direct access to existing files/dirs, else route to index.php
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^(.*)$ index.php?url=$1 [L,QSA]
+</IfModule>
 
-#accept loading of actual files and directories
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
+# Security headers + CORS (adjust origins for production)
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set X-XSS-Protection "1; mode=block"
+  # CORS allow all — change to specific origins for production
+  Header always set Access-Control-Allow-Origin "*"
+  Header always set Access-Control-Allow-Methods "GET,POST,OPTIONS,PUT,DELETE"
+  Header always set Access-Control-Allow-Headers "Content-Type, Authorization"
+</IfModule>
 
-#send everything else to the index page
-RewriteRule ^(.*)$ index.php?url=$1 [L,QSA]
+# Compression & caching
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css application/javascript application/json
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 month"
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType image/* "access plus 1 year"
+  ExpiresByType font/* "access plus 1 year"
+</IfModule>
+
+# Prevent directory listing
+Options -Indexes
