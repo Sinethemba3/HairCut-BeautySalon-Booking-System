@@ -338,30 +338,16 @@
     <!-- End Carousel Slide -->
 
     <!-- Start Service Section -->
-    <div id="bookings" class="service-promo-section section-top-gap-100">
+    <div id="bookings" class="service-promo-section section-top-gap-70">
         <!-- Start Services Content Text Area -->
-        <div class="main-menu section-title-wrapper py-5 my-5 bg-light rounded-4 shadow-sm">
+        <div class="main-menu section-title-wrapper py-5 my-5">
             <div class="container text-center px-4">
-                <h2 class="greatvibes fw-dark text-dark">Hair & Beauty Services</h2>
-                <?php 
-                    if(!empty($rows)):
-                        foreach($rows as $row):
-                ?>
-                    <p class="text-muted mt-3 mb-1 p">
-                        Discover our luxurious range of hair, beauty, and wellness treatments at <?= esc($row->store_name ?? '') ?>.
-                    </p>
-                    <p class="text-muted p">
-                        From premium wigs, braids, and hair care to facials, semi-permanent makeup, and relaxing massages, our salon and spa are designed for your total self-care.
-                    </p>
-                    <p class="text-muted mb-4 p">
-                        Explore the services below to begin your personalized pampering experience.
-                    </p>
-                <?php endforeach; endif; ?>
+                <h2 class="greatvibes fw-dark text-dark">What We Provide</h2>
             </div>
         </div>
 
         <!-- Filters -->
-        <div class="container pt-4">
+        <div class="container">
             <div class="service-filters">
                 <button class="active" onclick="filterServices('all')">All</button>
                 <?php

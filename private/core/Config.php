@@ -30,7 +30,7 @@
 		define('DBDRIVER', 'mysql');  
 	
 		// URL for live production
-		define('ROOT', 'http://datasync:8089/projects/bookings/public');
+		define('ROOT', 'http://192.168.0.221:8089/projects/bookings/public');
 
 		// Redirect URLs for live production
 		define('PAYFAST_RETURN_URL', ROOT . '/thanks?mode=approved');

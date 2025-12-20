@@ -61,8 +61,10 @@
                                 <ul>
                                     <?php if (Auth::access('Supper_admin' || 'Admin')): ?>
                                         <li><a href="<?= ROOT ?>/dashboard">Dashboard</a></li>
+                                        <li><a href="javascript:void(0)">Pages</a></li>
                                     <?php else: ?>
                                         <li><a href="<?= ROOT ?>/">Home</a></li>
+                                        <li><a href="javascript:void(0)">Pages</a></li>
                                     <?php endif; ?>
                                         <li class="active" aria-current="page">Signup</li>
                                 </ul>

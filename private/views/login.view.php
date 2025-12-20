@@ -60,7 +60,7 @@
                             <nav aria-label="breadcrumb">
                                 <ul>
                                     <li><a href="<?=ROOT?>/">Home</a></li>
-                                    <li><a href="<?=ROOT?>/">Shop</a></li>
+                                    <li><a href="javascript:void(0)">Pages</a></li>
                                     <li class="active" aria-current="page">Login</li>
                                 </ul>
                             </nav>
@@ -95,7 +95,7 @@
                                 align-items: flex-end;
                             "></div>
 
-                            <div class="text-center mb-4">
+                            <div class="text-center mb-8">
                                 <?php 
                                     if (!empty($uniqueSalons)):
                                         foreach ($uniqueSalons as $row):
@@ -105,8 +105,9 @@
                                         <img src="<?= $image ?>" height="50" width="50" alt="">
                                     </a>
                                 <?php endforeach; endif;?>
-                                <h3 class="auth-title mt-3" style="color: #333;">Log In</h3>
-                                <p class="auth-subtitle text-muted">Enter your credentials to access your account.</p>
+                                
+                                <!-- <h3 class="auth-title mt-3" style="color: #333;">Log In</h3> -->
+                                <p class="auth-subtitle text-muted mt-4">Enter your credentials to access your account.</p>
                             </div>
 
                             <!-- Email Field -->
