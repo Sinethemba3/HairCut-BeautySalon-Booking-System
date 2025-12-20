@@ -22,7 +22,7 @@
 		define('DBPASS', '');
 		define('DBDRIVER', 'mysql');
 
-		// LIVE PATH
+		// PRODUCTION PATH
 		define('ROOT', 'http://192.168.0.221:8089/projects/bookings/public');
 	}
 
